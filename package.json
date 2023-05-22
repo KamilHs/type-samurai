@@ -1,0 +1,15 @@
+{
+  "name": "type-samurai",
+  "version": "1.0.0",
+  "description": "Utility types for Typescript",
+  "main": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "typescript": "^5.0.4"
+  }
+}
