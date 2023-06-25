@@ -3,15 +3,14 @@
 </div>
 
 # type-samurai
-<hr/>
-##### Advanced utility types for TypeScript
+
+## Advanced utility types for TypeScript
 This package contains many useful utility types that are currently not available in TypeScript, including simple arithmetic operations, color validations, conditional statements, string manipulations, and many more.
-<hr/>
+
 ## Install
 ```sh
 npm install --save-dev type-samurai
 ```
-<hr/>
 
 ## Usage
 ```ts
@@ -20,13 +19,12 @@ import type { Sum } from 'type-samurai'
 // 912468
 type Result = Sum<123456, 789012>
 ```
-<hr/>
 
 ## API Overview
 
 * ##### Statements
   * [And](src/and.d.ts?plain=1#L15) - Returns result of logical multiplication of two params
-  * [AndArr](src/and.d.ts?plain=1#L31) - Returns result of logical multiplication of all elements inside the passed array type
+  * [AndArr](src/and.d.ts?plain=1#L31) - Returns the result of logical multiplication of all elements inside the passed array type
   * [Extend](src/extends.d.ts?plain=1#L16) - Returns boolean whether the first argument extends the second argument
   * [IfExtends](src/extends.d.ts?plain=1#L40) - Returns the third argument if the first argument extends the second argument (defaults to `true`), otherwise returns the fourth argument (defaults to `false`) 
   * [IfNotExtends](src/extends.d.ts?plain=1#L56) - Returns the third argument if the first argument doesn't extend the second argument (defaults to `true`), otherwise returns the fourth argument (defaults to `false`) 
@@ -50,7 +48,7 @@ type Result = Sum<123456, 789012>
   * [IsNever](src/never.d.ts?plain=1#L13) - Returns a boolean if the passed type is `never`
   * [NeverifyProperties](src/never.d.ts?plain=1#L44) - Turns all properties of an object to type `never`. If `makeOptional` option is `true`, makes all properties optional
 * ##### Number
-  * [CompareNumberLength](src/number-length.d.ts?plain=1#L28) - Accepts two numbers, returns the third argument (defaults to `never`) if the first number is shorter, otheriwse returns the fourth argument (defaults to `never`) if the second argument is shorter, if numbers have the same length returns the fifth argument (defaults to `never`)
+  * [CompareNumberLength](src/number-length.d.ts?plain=1#L28) - Accepts two numbers, returns the third argument (defaults to `never`) if the first number is shorter, otherwise returns the fourth argument (defaults to `never`) if the second argument is shorter, if numbers have the same length returns the fifth argument (defaults to `never`)
   * [DigitsTuple](src/digits-tuple.d.ts?plain=1#L17) - Accepts an integer argument and returns a tuple of its digits
   * [Float](src/number.d.ts?plain=1#L13) - Accepts a number and returns it if it is a float, returns `never` otherwise
   * [IfFloat](src/number.d.ts?plain=1#L74) - Returns the second argument if the first argument is float (defaults to `true`), otherwise returns the third argument (defaults to `false`)
@@ -82,19 +80,19 @@ type Result = Sum<123456, 789012>
   * [PositiveFloat](src/number.d.ts?plain=1#L25) - Accepts a number and returns it if it is a positive float, returns `never` otherwise
   * [PositiveInteger](src/number.d.ts?plain=1#L21) - Accepts a number and returns it if it is a positive integer, returns `never` otherwise
 * ##### String
-  * [CompareStringLength](src/string-length.d.ts?plain=1#L60) - Accepts two strings, returns the third argument (defaults to `never`) if the first string is shorter, otheriwse returns the fourth argument (defaults to `never`) if the second argument is shorter, if strings have the same length returns the fifth argument (defaults to `never`)
+  * [CompareStringLength](src/string-length.d.ts?plain=1#L60) - Accepts two strings, returns the third argument (defaults to `never`) if the first string is shorter, otherwise returns the fourth argument (defaults to `never`) if the second argument is shorter if strings have the same length returns the fifth argument (defaults to `never`)
   * [EmptyString](src/string.d.ts?plain=1#L5) - Accepts a string and returns it if it is an empty string, returns `never` otherwise
   * [EndsWith](src/ends-with.d.ts?plain=1#L9) - Returns a boolean whether the first string argument ends with the second one
-  * [FirstCharacter](src/first-character.d.ts?plain=1#L18) - Accepts a string and returns its first character if possible, returns `never` otherwise. If `includeRest` option is `true`, returns the first character and the remaining string in the format of tuple: `[FirstCharacter, Rest]`
+  * [FirstCharacter](src/first-character.d.ts?plain=1#L18) - Accepts a string and returns its first character if possible, returns `never` otherwise. If `includeRest` option is `true`, returns the first character and the remaining string in the format of a tuple: `[FirstCharacter, Rest]`
   * [IfEmptyString](src/string.d.ts?plain=1#L21) - Returns the second argument if the first argument is an empty string (defaults to `true`), otherwise returns the third argument (defaults to `false`)
   * [IfNonEmptyString](src/string.d.ts?plain=1#L27) - Returns the second argument if the first argument is a non-empty string (defaults to `true`), otherwise returns the third argument (defaults to `false`)
   * [IsEmptyString](src/string.d.ts?plain=1#L21) - Returns a boolean if the passed string is an empty string
-  * [IsLongerString](src/string-length.d.ts?plain=1#L109) - Accepts two strings, returns a boolean whether the first argument is longer. Range of string length `[0, 1000]` 
+  * [IsLongerString](src/string-length.d.ts?plain=1#L109) - Accepts two strings, and returns a boolean whether the first argument is longer. Range of string length `[0, 1000]` 
   * [IsNonEmptyString](src/string.d.ts?plain=1#L17) - Returns a boolean if the passed string is an empty string
   * [IsSameLengthString](src/string-length.d.ts?plain=1#L72) - Accepts two strings, returns a boolean whether strings have the same length. Range of string length `[0, 1000]`
-  * [IsShorterString](src/string-length.d.ts?plain=1#L94) - Accepts two strings, returns a boolean whether the first string is shorter. Range of string length `[0, 1000]`
+  * [IsShorterString](src/string-length.d.ts?plain=1#L94) - Accepts two strings, and returns a boolean whether the first string is shorter. Range of string length `[0, 1000]`
   * [Join](src/join.d.ts?plain=1#L16) - Type version of `Array.prototype.join()`. Joins the first array argument by the second argument.
-  * [LastCharacter](src/last-character.d.ts?plain=1#L33) - Accepts a string and returns its first character if possible, returns `never` otherwise. If `includeRest` option is `true`, returns the last character and the remaining string in the format of tuple: `[LastCharacter, Rest]`. Range of string length `[0, 1000]`
+  * [LastCharacter](src/last-character.d.ts?plain=1#L33) - Accepts a string and returns its first character if possible, returns `never` otherwise. If `includeRest` option is `true`, returns the last character and the remaining string in the format of a tuple: `[LastCharacter, Rest]`. Range of string length `[0, 1000]`
   * [NonEmptyString](src/string.d.ts?plain=1#L11) - Accepts a string and returns it if it is a non-empty string, returns `never` otherwise
   * [RemoveLeading](src/remove-leading.d.ts?plain=1#L17) - Accepts a string and removes leading characters specified in the second argument
   * [Repeat](src/repeat.d.ts?plain=1#L22) - Repeats the first argument number of times specified in the second argument. Range `[0,999]`
@@ -108,13 +106,13 @@ type Result = Sum<123456, 789012>
   * [Concat](src/array.d.ts?plain=1#L9) - Type version of `Array.prototype.concat()`. Concatenates two arrays into one.
   * [EmptyArray](src/array.d.ts?plain=1#L12) - Returns the first argument if it is an empty array, otherwise returns `never`
   * [IfEmptyArray](src/array.d.ts?plain=1#L67) - Returns the second argument if the first argument is an empty array (defaults to `true`), otherwise returns the third argument (defaults to `false`)
-  * [IfNonEmptyArray](src/array.d.ts?plain=1#L81) - Returns the second argument if the first argument is a non empty array (defaults to `true`), otherwise returns the third argument (defaults to `false`)
+  * [IfNonEmptyArray](src/array.d.ts?plain=1#L81) - Returns the second argument if the first argument is a non-empty array (defaults to `true`), otherwise returns the third argument (defaults to `false`)
   * [Includes](src/includes.d.ts?plain=1#L15) - Returns a boolean whether the second argument is in the first array argument
   * [IsEmptyArray](src/array.d.ts?plain=1#L40) - Returns a boolean whether the first parameter is an empty array
-  * [IsNonEmptyArray](src/array.d.ts?plain=1#L53) - Returns a boolean whether the first parameter is a non empty array
-  * [Pop](src/pop.d.ts?plain=1#L19) - Removes last element from the first array argument. If the `includeRemoved` option is `true` return removed element with the new array in the format of [rest, removed]
-  * [Push](src/push.d.ts?plain=1#L9) - Pushes the second argument in the first argument and returns the new array Removes the first element from the first array argument. If the `includeRemoved` option is `true` return removed element with the new array in the format of [rest, removed]
-  * [Shift](src/shift.d.ts?plain=1#L18) - Removes the first element from the first array argument. If the `includeRemoved` option is `true` return removed element with the new array in the format of [rest, removed]
+  * [IsNonEmptyArray](src/array.d.ts?plain=1#L53) - Returns a boolean whether the first parameter is a non-empty array
+  * [Pop](src/pop.d.ts?plain=1#L19) - Removes last element from the first array argument. If the `includeRemoved` option is `true` return the removed element with the new array in the format of [rest, removed]
+  * [Push](src/push.d.ts?plain=1#L9) - Pushes the second argument in the first argument and returns the new array Removes the first element from the first array argument. If the `includeRemoved` option is `true` return the removed element with the new array in the format of [rest, removed]
+  * [Shift](src/shift.d.ts?plain=1#L18) - Removes the first element from the first array argument. If the `includeRemoved` option is `true` return the removed element with the new array in the format of [rest, removed]
   * [Unshift](src/unshift.d.ts?plain=1#L9) - Adds the second argument to the beginning of the first array argument.
 * ##### Math
   * [Abs](src/number.d.ts?plain=1#L131) - Accepts a number and returns the absolute value of it
@@ -144,7 +142,7 @@ type Result = Sum<123456, 789012>
   * [Mult](src/mult.d.ts?plain#L117) - Accepts two integers and returns their multiplication. Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
   * [Negate](src/number.d.ts?plain=1#L133) - Accepts a number and returns the absolute negative value of it
   * [Odd](src/number.d.ts?plain=1#L35) - Accepts an integer and returns it if it is even, returns `never` otherwise
-  * [Pow](src/pow.d.ts?plain=1#L23) - Returns the first integer parameter raised to factor of the second integer parameter. Range for factor: `[0, ...]`. Range for result: `[-2^54,2^54]`
+  * [Pow](src/pow.d.ts?plain=1#L23) - Returns the first integer parameter raised to the factor of the second integer parameter. The range for factor: `[0, ...]`. Range for result: `[-2^54,2^54]`
   * [Sub](src/sub.d.ts?plain=1#L114) - Accepts two integers and returns their subtraction. Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
   * [Sum](src/sum.d.ts?plain=1#L112) - Accepts two integers and returns their sum. Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
   * [SumArr](src/sum.d.ts?plain=1#L146) - Accepts an array of integers and returns the sum of its elements. Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
@@ -156,25 +154,24 @@ type Result = Sum<123456, 789012>
   * [IfRGB](src/color.d.ts?plain=1#L82) - Returns the third argument if the first argument is valid RGB color (defaults to `true`), otherwise returns the fourth argument (defaults to `false`). The second argument is an object type with `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
   * [IsColor](src/color.d.ts?plain=1#L285) - Returns a boolean whether the first string argument is a valid RGB or HEX or HSL color. The second argument is an object type with `rgbOptions: RGBOptions` and `hslOptions: hslOptions` properties, which can accept the separator between color parameters (defaults to `', '`)
   * [IsHEX](src/color.d.ts?plain=1#L146) - Returns a boolean whether the first string argument is a valid HEX color.
-  * [IsHSL](src/color.d.ts?plain=1#L215) - Returns a boolean whether the first string argument is a valid HSL color. The second argument is an object type with `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
-  * [IsRGB](src/color.d.ts?plain=1#L64) - Returns a boolean whether the first string argument is a valid RGB color. The second argument is an object type with `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
+  * [IsHSL](src/color.d.ts?plain=1#L215) - Returns a boolean whether the first string argument is a valid HSL color. The second argument is an object type with the `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
+  * [IsRGB](src/color.d.ts?plain=1#L64) - Returns a boolean whether the first string argument is a valid RGB color. The second argument is an object type with the `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
   * [HEX](src/color.d.ts?plain=1#L126) - Returns the first string argument if it is a valid HEX color, otherwise returns `never`
-  * [HSL](src/color.d.ts?plain=1#L189) - Returns the first string argument if it is a valid HSL color, otherwise returns `never`. The second argument is an object type with `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
-  * [RGB](src/color.d.ts?plain=1#L36) - Returns the first string argument if it is a valid RGB color, otherwise returns `never`. The second argument is an object type with `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
+  * [HSL](src/color.d.ts?plain=1#L189) - Returns the first string argument if it is a valid HSL color, otherwise returns `never`. The second argument is an object type with the `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
+  * [RGB](src/color.d.ts?plain=1#L36) - Returns the first string argument if it is a valid RGB color, otherwise returns `never`. The second argument is an object type with the `separator: string` property, which shows the separator between color parameters (defaults to `', '`)
 * ##### Utilities
-  * [Dot](src/dot.d.ts?plain=1#L9) - Returns result of concatenation of two string literals with '.' if the second literal is not empty. otherwise returns the first string literal.
+  * [Dot](src/dot.d.ts?plain=1#L9) - Returns the result of the concatenation of two string literals with '.' if the second literal is not empty. otherwise returns the first string literal.
   * [IfEqual](src/equal.d.ts?plain=1#L42) - Accepts two types and returns the third argument if the first two are equal (defaults to `true`), otherwise returns the fourth argument (defaults to `false`)
   * [IfNotEqual](src/equal.d.ts?plain=1#L58) - Returns the third argument if the first two are not equal (defaults to `true`), otherwise returns the fourth argument (defaults to `false`)
-  * [IfTuple](src/is-tuple.d.ts?plain=1#L29) - Returns the second argument if the first array argument is fixed length tuple (defaults to `true`), otherwise returns the third argument (defaults to `false`)
+  * [IfTuple](src/is-tuple.d.ts?plain=1#L29) - Returns the second argument if the first array argument is a fixed length tuple (defaults to `true`), otherwise returns the third argument (defaults to `false`)
   * [IsEqual](src/equal.d.ts?plain=1#L14) - Returns a boolean whether the passed two arguments are equal
   * [IsNotEqual](src/equal.d.ts?plain=1#L30) - Returns a boolean whether the passed two arguments are not equal
-  * [IsTuple](src/is-tuple.d.ts?plain=1#L14) - Returns a boolean whether the first array argument is fixed length tuple
+  * [IsTuple](src/is-tuple.d.ts?plain=1#L14) - Returns a boolean whether the first array argument is a fixed length tuple
   * [Prettify](src/prettify.d.ts?plain=1#L15) - Accepts a type and returns its simplified version for better readability. Transforms interface to type, simplifies intersections. If `recursive` option is `true` transforms the children object properties as well
   * [RemoveIndexSignature](src/remove-index-signature.d.ts?plain=1#L11) - Removes the index signature from the passed type
   * [ToPrimitive](src/to-primitive.d.ts?plain=1#L13) - Turns accepted literal type argument to its primitive
-  * [TupleToObject](src/tuple-to-object.d.ts?plain=1#L12) - Accepts a tuple of string, number or symbol and return the object type, where the key values are the elements of the tuple
+  * [TupleToObject](src/tuple-to-object.d.ts?plain=1#L12) - Accepts a tuple of string, number or symbol and returns the object type, where the key values are the elements of the tuple
   * [UnionToIntersection](src/union-to-intersection.d.ts?plain=1#L10) - Turns the passed union type to an intersection
-<hr/>
 
 ## Contributors
 * [Kamil Salimli](https://github.com/KamilHs)
