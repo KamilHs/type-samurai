@@ -14,7 +14,7 @@ import { Stringify } from "./stringify";
 export type NumberLength<T extends number> = StringLength<Stringify<T>>;
 
 /**
- * Accepts two numbers, returns the third argument (defaults to `never`) if the first number is shorter, otheriwse returns the fourth argument (defaults to `never`) if the second argument is shorter, if numbers have the same length returns the fifth argument (defaults to `never`)
+ * Accepts two numbers, returns the third argument (defaults to `never`) if the first number is shorter, otherwise returns the fourth argument (defaults to `never`) if the second argument is shorter, if numbers have the same length returns the fifth argument (defaults to `never`)
  * @example
  * ```ts
  * // 'first shorter'

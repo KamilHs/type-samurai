@@ -46,7 +46,7 @@ type _StringLength<
 export type StringLength<S extends string> = _StringLength<S>;
 
 /**
- * Accepts two strings, returns the third argument (defaults to `never`) if the first string is shorter, otheriwse returns the fourth argument (defaults to `never`) if the second argument is shorter, if strings have the same length returns the fifth argument (defaults to `never`)
+ * Accepts two strings, returns the third argument (defaults to `never`) if the first string is shorter, otherwise returns the fourth argument (defaults to `never`) if the second argument is shorter, if strings have the same length returns the fifth argument (defaults to `never`)
  * @example
  * ```ts
  * // 'first shorter'
