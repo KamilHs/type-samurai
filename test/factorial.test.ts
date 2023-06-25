@@ -1,0 +1,27 @@
+import { expectType } from "tsd-lite";
+import { Factorial } from "../src/factorial";
+
+expectType<never>({} as Factorial<-1>);
+expectType<never>({} as Factorial<number>);
+expectType<1>({} as Factorial<0>);
+expectType<1>({} as Factorial<1>);
+expectType<2>({} as Factorial<2>);
+expectType<6>({} as Factorial<3>);
+expectType<24>({} as Factorial<4>);
+expectType<120>({} as Factorial<5>);
+expectType<720>({} as Factorial<6>);
+expectType<5040>({} as Factorial<7>);
+expectType<40320>({} as Factorial<8>);
+expectType<362880>({} as Factorial<9>);
+expectType<3628800>({} as Factorial<10>);
+expectType<39916800>({} as Factorial<11>);
+expectType<479001600>({} as Factorial<12>);
+expectType<6227020800>({} as Factorial<13>);
+expectType<87178291200>({} as Factorial<14>);
+expectType<1307674368000>({} as Factorial<15>);
+expectType<20922789888000>({} as Factorial<16>);
+expectType<355687428096000>({} as Factorial<17>);
+expectType<6402373705728000>({} as Factorial<18>);
+expectType<121645100408832000>({} as Factorial<19>);
+expectType<2432902008176640000>({} as Factorial<20>);
+expectType<51090942171709440000>({} as Factorial<21>);
