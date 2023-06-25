@@ -1,15 +1,38 @@
 {
   "name": "type-samurai",
   "version": "1.0.0",
-  "description": "Utility types for Typescript",
-  "main": "index.d.ts",
+  "description": "Advanced utility types for Typescript",
+  "types": "./index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest -c jest.config.tsd.js"
   },
-  "author": "",
+  "files": [
+    "index.d.ts",
+    "src"
+  ],
+  "author": {
+    "name": "Kamil Salimli",
+    "email": "kamilsalimli1940@gmail.com"
+  },
+  "keywords": [
+    "typescript",
+    "types",
+    "ts",
+    "math",
+    "arithmetics",
+    "color",
+    "generics",
+    "utilities",
+    "length",
+    "utils"
+  ],
+  "repository": "github:KamilHs/type-samurai",
   "license": "MIT",
   "devDependencies": {
+    "@tsd/typescript": "^5.0.4",
     "@types/node": "^20.2.3",
+    "jest": "^29.5.0",
+    "jest-runner-tsd": "^5dasda.0.0",
     "typescript": "^5.0.4"
   }
 }
