@@ -82,3 +82,41 @@ export type IfLowerThan<
   IfTrue = true,
   IfFalse = false
 > = If<IsLowerThan<Num1, Num2>, IfTrue, IfFalse>;
+
+/**
+ * Returns a boolean whether the first passed integer is lower or equal to the second integer. Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
+ * @example
+ * ```ts
+ * // true
+ * type Case1 = IsLowerOrEqual<1, 10>
+ * // false
+ * type Case2 = IsLowerOrEqual<1, -10>
+ * ```
+ */
+export type IsLowerOrEqual<Num1 extends number, Num2 extends number> = IsEqual<
+  Num1,
+  Num2
+> extends true
+  ? true
+  : IsLowerThan<Num1, Num2>;
+
+/**
+ * Returns the third argument if the first argument (integer) is lower than the second argument (integer) or equal (defaults to `true`), otherwise returns the fourth argument (defaults to `false`). Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
+ * @example
+ * ```ts
+ * 'valid'
+ * type Case1 = IfLowerOrEqual<1, 10, 'valid'>
+ * // 'invalid'
+ * type Case2 = IfLowerOrEqual<23, 1, 'valid', 'invalid'>
+ * ```
+ */
+export type IfLowerOrEqual<
+  Num1 extends number,
+  Num2 extends number,
+  IfTrue = true,
+  IfFalse = false
+> = If<
+  IsEqual<Num1, Num2> extends true ? true : IsLowerThan<Num1, Num2>,
+  IfTrue,
+  IfFalse
+>;

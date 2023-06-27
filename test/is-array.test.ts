@@ -1,0 +1,44 @@
+import { expectType } from "tsd-lite";
+import { IsArray, IsMutableArray, IsReadonlyArray } from "../src/is-array";
+
+expectType<true>({} as IsArray<[]>);
+expectType<true>({} as IsArray<readonly []>);
+expectType<true>({} as IsArray<number[]>);
+expectType<true>({} as IsArray<string[]>);
+expectType<true>({} as IsArray<[1, 2, 3]>);
+expectType<false>({} as IsArray<false>);
+expectType<false>({} as IsArray<string>);
+expectType<false>({} as IsArray<number>);
+expectType<false>({} as IsArray<never>);
+expectType<false>({} as IsArray<any>);
+expectType<false>({} as IsArray<unknown>);
+
+expectType<true>({} as IsMutableArray<[]>);
+expectType<true>({} as IsMutableArray<number[]>);
+expectType<true>({} as IsMutableArray<string[]>);
+expectType<true>({} as IsMutableArray<[1, 2, 3]>);
+expectType<false>({} as IsMutableArray<readonly []>);
+expectType<false>({} as IsMutableArray<readonly number[]>);
+expectType<false>({} as IsMutableArray<readonly string[]>);
+expectType<false>({} as IsMutableArray<false>);
+expectType<false>({} as IsMutableArray<string>);
+expectType<false>({} as IsMutableArray<number>);
+expectType<false>({} as IsMutableArray<never>);
+expectType<false>({} as IsMutableArray<any>);
+expectType<false>({} as IsMutableArray<unknown>);
+
+expectType<false>({} as IsReadonlyArray<[]>);
+expectType<false>({} as IsReadonlyArray<number[]>);
+expectType<false>({} as IsReadonlyArray<string[]>);
+expectType<false>({} as IsReadonlyArray<[1, 2, 3]>);
+expectType<true>({} as IsReadonlyArray<Readonly<[1, 2, 3]>>);
+expectType<true>({} as IsReadonlyArray<readonly [1, 2, 3]>);
+expectType<true>({} as IsReadonlyArray<readonly []>);
+expectType<true>({} as IsReadonlyArray<readonly number[]>);
+expectType<true>({} as IsReadonlyArray<readonly string[]>);
+expectType<false>({} as IsReadonlyArray<false>);
+expectType<false>({} as IsReadonlyArray<string>);
+expectType<false>({} as IsReadonlyArray<number>);
+expectType<false>({} as IsReadonlyArray<never>);
+expectType<false>({} as IsReadonlyArray<any>);
+expectType<false>({} as IsReadonlyArray<unknown>);

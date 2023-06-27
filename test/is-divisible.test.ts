@@ -1,5 +1,6 @@
 import { expectType } from "tsd-lite";
 import {
+  IsDivisible,
   IsDivisibleByFive,
   IsDivisibleByHundred,
   IsDivisibleBySix,
@@ -80,3 +81,16 @@ expectType<true>({} as IsDivisibleByHundred<-100>);
 expectType<false>({} as IsDivisibleByHundred<90>);
 expectType<false>({} as IsDivisibleByHundred<92310>);
 expectType<false>({} as IsDivisibleByHundred<-92310>);
+
+expectType<true>({} as IsDivisible<4, 2>)
+expectType<true>({} as IsDivisible<10, 2>)
+expectType<true>({} as IsDivisible<1024, 2>)
+expectType<true>({} as IsDivisible<1025, 5>)
+expectType<true>({} as IsDivisible<1026, 3>)
+expectType<true>({} as IsDivisible<1000, 10>)
+expectType<true>({} as IsDivisible<1001, 11>)
+expectType<false>({} as IsDivisible<1001, 2>)
+expectType<false>({} as IsDivisible<1001, 3>)
+expectType<false>({} as IsDivisible<1001, 5>)
+expectType<false>({} as IsDivisible<1001, 4>)
+expectType<false>({} as IsDivisible<1000, 11>)

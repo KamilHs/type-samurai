@@ -3,6 +3,7 @@ import { DigitsTuple } from "./digits-tuple";
 import { EndsWith } from "./ends-with";
 import { IsEqual } from "./equal";
 import { IfLowerThan } from "./lower-than";
+import { Mod } from "./mod";
 import { IsEven } from "./number";
 import { Stringify } from "./stringify";
 import { SumArr } from "./sum";
@@ -71,7 +72,6 @@ export type IsDivisibleByFive<T extends number> = EndsWith<
   "0" | "5"
 >;
 
-
 /**
  * Accepts an integer argument and returns a boolean whether it is divisible by six. Range: `[Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]`
  * @example
@@ -119,3 +119,18 @@ export type IsDivisibleByHundred<T extends number> = EndsWith<
   Stringify<T>,
   "00"
 >;
+
+/**
+ * Returns a boolean whether the first integer argument is divisible by the second integer argument
+ * @example
+ * ```ts
+ * // true
+ * type Case1 = IsDivisible<1024, 2>
+ * // false
+ * type Case2 = IsDivisible<1023, 2>
+ * ```
+ */
+export type IsDivisible<
+  Dividend extends number,
+  Divisor extends number
+> = IsEqual<Mod<Dividend, Divisor>, 0>;
