@@ -1,6 +1,5 @@
 import { IsEqual } from "./equal";
-import { IsNever } from "./never";
-import { Abs, IfPositive, IsNegative, IsPositive, ParseNumber } from "./number";
+import { Abs, IfPositive, IsNegative, ParseNumber } from "./number";
 import { IfGreaterOrEqual, IsGreaterOrEqual } from "./greater-than";
 import { Sum } from "./sum";
 import { Or } from "./or";
@@ -9,6 +8,7 @@ import { IsEmptyArray } from "./array";
 import { And } from "./and";
 import { If } from "./if";
 import { IsLowerThan } from "./lower-than";
+import { IsArrayIndex } from "./is-array-index";
 
 type SliceRemovedItemValue = Record<"__type-samurai_internal__", symbol>;
 
@@ -56,17 +56,15 @@ type Slice<
     ? IfGreaterOrEqual<NewStart, NewEnd> extends true
       ? []
       : FilterRemoved<{
-          [K in keyof T]: ParseNumber<K> extends infer NumK extends number
-            ? IsNever<NumK> extends true
-              ? T[K]
-              : If<
-                  And<
-                    IsGreaterOrEqual<NumK, NewStart>,
-                    IsLowerThan<NumK, NewEnd>
-                  >,
-                  T[K],
-                  SliceRemovedItemValue
-                >
+          [K in keyof T]: IsArrayIndex<K> extends true
+            ? If<
+                And<
+                  IsGreaterOrEqual<ParseNumber<K>, NewStart>,
+                  IsLowerThan<ParseNumber<K>, NewEnd>
+                >,
+                T[K],
+                SliceRemovedItemValue
+              >
             : T[K];
         }>
     : T
