@@ -1,3 +1,5 @@
+import { IsEqual } from "./equal";
+import { If } from "./if";
 import { IfLowerThan, IsLowerThan } from "./lower-than";
 
 /**
@@ -31,3 +33,19 @@ export type IfGreaterThan<
   IfTrue = true,
   IfFalse = false
 > = IfLowerThan<Num2, Num1, IfTrue, IfFalse>;
+
+export type IsGreaterOrEqual<
+  Num1 extends number,
+  Num2 extends number
+> = IsEqual<Num1, Num2> extends true ? true : IsGreaterThan<Num1, Num2>;
+
+export type IfGreaterOrEqual<
+  Num1 extends number,
+  Num2 extends number,
+  IfTrue = true,
+  IfFalse = false
+> = If<
+  IsEqual<Num1, Num2> extends true ? true : IsGreaterThan<Num1, Num2>,
+  IfTrue,
+  IfFalse
+>;

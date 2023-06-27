@@ -82,3 +82,21 @@ export type IfLowerThan<
   IfTrue = true,
   IfFalse = false
 > = If<IsLowerThan<Num1, Num2>, IfTrue, IfFalse>;
+
+export type IsLowerOrEqual<Num1 extends number, Num2 extends number> = IsEqual<
+  Num1,
+  Num2
+> extends true
+  ? true
+  : IsLowerThan<Num1, Num2>;
+
+export type IfLowerOrEqual<
+  Num1 extends number,
+  Num2 extends number,
+  IfTrue = true,
+  IfFalse = false
+> = If<
+  IsEqual<Num1, Num2> extends true ? true : IsLowerThan<Num1, Num2>,
+  IfTrue,
+  IfFalse
+>;
