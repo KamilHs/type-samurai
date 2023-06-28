@@ -42,4 +42,3 @@ export type Sort<T extends readonly number[]> = IsLowerThan<
 > extends true
   ? T
   : _Sort<T, Decrement<T["length"]>>;
-
