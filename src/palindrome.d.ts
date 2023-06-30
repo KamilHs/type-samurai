@@ -18,6 +18,3 @@ type _IsPalindrome<T extends string> = IsEmptyString<T> extends true
 export type IsPalindrome<T extends string | number> = _IsPalindrome<
   Stringify<T>
 >;
-
-
-type A = IsPalindrome<'dasdd'>
