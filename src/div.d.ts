@@ -1,14 +1,15 @@
-import { And, AndArr } from "./and";
+import { And } from "./and";
 import { Decrement } from "./decrement";
-import { IfEqual, IsEqual } from "./equal";
+import { IfEqual, IsEqual, IsNotEqual } from "./equal";
 import { IfGreaterThan } from "./greater-than";
 import { If } from "./if";
+import { Increment } from "./increment";
 import { IsLowerThan } from "./lower-than";
 import { Mult } from "./mult";
 import { IsNever } from "./never";
 import { Abs, ParseNumber } from "./number";
 import { Or } from "./or";
-import { IsEmptyString, IsNonEmptyString } from "./string";
+import { IsEmptyString } from "./string";
 import { Stringify } from "./stringify";
 import { Sub } from "./sub";
 
@@ -29,7 +30,8 @@ type _Div<
   Divisor extends number,
   Result extends string = "",
   CurrentDividend extends string = "",
-  PrevRemainder extends string = ""
+  IterationsWithoutDivision extends number = 0,
+  HadFirstDivision extends boolean = false
 > = Or<
   IsEmptyString<CurrentDividend>,
   IsLowerThan<ParseNumber<CurrentDividend>, Divisor>
@@ -41,13 +43,7 @@ type _Div<
         Rest,
         Divisor,
         If<
-          AndArr<
-            [
-              IsEqual<PrevRemainder, "0">,
-              IsNonEmptyString<Result>,
-              IsLowerThan<ParseNumber<FirstDigit>, Divisor>
-            ]
-          >,
+          And<HadFirstDivision, IsNotEqual<IterationsWithoutDivision, 0>>,
           `${Result}0`,
           Result
         >,
@@ -56,7 +52,9 @@ type _Div<
           "0",
           FirstDigit,
           `${CurrentDividend}${FirstDigit}`
-        >
+        >,
+        Increment<IterationsWithoutDivision>,
+        HadFirstDivision
       >
     : never
   : _FindQuotient<
@@ -75,7 +73,8 @@ type _Div<
         Divisor,
         `${Result}${Quotient}`,
         IfGreaterThan<Remainder, 0, `${Remainder}`, "">,
-        Stringify<Remainder>
+        0,
+        true
       >
     : never
   : never;
@@ -89,4 +88,4 @@ export type Div<Dividend extends number, Divisor extends number> = IsEqual<
   ? 0
   : _Div<Stringify<Abs<Dividend>>, Abs<Divisor>>;
 // 35184372088832
-type Case2 = Div<70368744177664, 5>
+type Case2 = Div<4800000, 12000>;
