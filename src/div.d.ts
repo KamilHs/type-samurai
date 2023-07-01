@@ -7,7 +7,7 @@ import { Increment } from "./increment";
 import { IsLowerThan } from "./lower-than";
 import { Mult } from "./mult";
 import { IsNever } from "./never";
-import { Abs, ParseNumber } from "./number";
+import { Abs, IsNegative, IsPositive, Negate, ParseNumber } from "./number";
 import { Or } from "./or";
 import { IsEmptyString } from "./string";
 import { Stringify } from "./stringify";
@@ -92,5 +92,16 @@ export type Div<Dividend extends number, Divisor extends number> = IsEqual<
   ? never
   : IsEqual<Dividend, 0> extends true
   ? 0
-  : _Div<Stringify<Abs<Dividend>>, Abs<Divisor>>;
-
+  : _Div<
+      Stringify<Abs<Dividend>>,
+      Abs<Divisor>
+    > extends infer Quotient extends number
+  ? If<
+      Or<
+        And<IsNegative<Dividend>, IsNegative<Divisor>>,
+        And<IsPositive<Dividend>, IsPositive<Divisor>>
+      >,
+      Quotient,
+      Negate<Quotient>
+    >
+  : never;
