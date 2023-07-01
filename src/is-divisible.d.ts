@@ -1,10 +1,9 @@
 import { And } from "./and";
 import { DigitsTuple } from "./digits-tuple";
-import { Div } from "./div";
 import { EndsWith } from "./ends-with";
 import { IsEqual } from "./equal";
 import { IfLowerThan } from "./lower-than";
-import { Mult } from "./mult";
+import { Mod } from "./mod";
 import { IsEven } from "./number";
 import { Stringify } from "./stringify";
 import { SumArr } from "./sum";
@@ -121,9 +120,7 @@ export type IsDivisibleByHundred<T extends number> = EndsWith<
   "00"
 >;
 
-export type IsDivisible<Dividend extends number, Divisor extends number> = Div<
-  Dividend,
-  Divisor
-> extends infer Quotient extends number
-  ? IsEqual<Mult<Quotient, Divisor>, Dividend>
-  : false;
+export type IsDivisible<
+  Dividend extends number,
+  Divisor extends number
+> = IsEqual<Mod<Dividend, Divisor>, 0>;

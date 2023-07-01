@@ -10,5 +10,3 @@ export type Mod<Dividend extends number, Divisor extends number> = Div<
     ? Sub<Dividend, Product>
     : never
   : never;
-
-type A = Mod<4, 3>
