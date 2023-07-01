@@ -37,7 +37,13 @@ type _Div<
   IsLowerThan<ParseNumber<CurrentDividend>, Divisor>
 > extends true
   ? IsEmptyString<Dividend> extends true
-    ? ParseNumber<Result>
+    ? ParseNumber<
+        If<
+          And<HadFirstDivision, IsNotEqual<IterationsWithoutDivision, 0>>,
+          `${Result}0`,
+          Result
+        >
+      >
     : Dividend extends `${infer FirstDigit extends string}${infer Rest extends string}`
     ? _Div<
         Rest,
@@ -87,5 +93,4 @@ export type Div<Dividend extends number, Divisor extends number> = IsEqual<
   : IsEqual<Dividend, 0> extends true
   ? 0
   : _Div<Stringify<Abs<Dividend>>, Abs<Divisor>>;
-// 35184372088832
-type Case2 = Div<4800000, 12000>;
+
