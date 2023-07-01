@@ -1,4 +1,4 @@
-export type PartialByKeys<T extends object, K extends keyof T> = Pick<T, K> & {
+export type PartialOnly<T extends object, K extends keyof T> = Pick<T, K> & {
   [P in Exclude<keyof T, K>]?: T[P];
 };
 

@@ -1,4 +1,4 @@
-export type ReadonlyByKeys<T extends object, K extends keyof T> = Pick<T, K> & {
+export type ReadonlyOnly<T extends object, K extends keyof T> = Pick<T, K> & {
   readonly [P in Exclude<keyof T, K>]: T[P];
 };
 

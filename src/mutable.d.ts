@@ -17,7 +17,7 @@ export type Mutable<
     : T[K];
 };
 
-export type MutableByKeys<T extends object, K extends keyof T> = Pick<T, K> & {
+export type MutableOnly<T extends object, K extends keyof T> = Pick<T, K> & {
   -readonly [P in Exclude<keyof T, K>]: T[P];
 };
 
