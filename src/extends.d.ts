@@ -13,7 +13,7 @@ import { Pop } from "./pop";
  * type Case2 = Extends<number, 1>
  * ```
  */
-export type Extends<T, Base> = T extends Base ? true : false;
+export type Extends<T, Base> = [T] extends [Base] ? true : false;
 
 /**
  * Returns boolean whether the first argument doesn't extend the second argument

@@ -31,7 +31,7 @@ export type NonEmptyArray<T extends readonly unknown[]> = If<
 >;
 
 /**
- * Returns a boolean whether the first parameter is an empty array
+ * Returns a boolean whether the passed argument is an empty array
  * @example
  * ```ts
  * // false
@@ -44,7 +44,7 @@ export type IsEmptyArray<T extends readonly unknown[]> = If<
 >;
 
 /**
- * Returns a boolean whether the first parameter is a non empty array
+ * Returns a boolean whether the passed argument is a non empty array
  * @example
  * ```ts
  * // true

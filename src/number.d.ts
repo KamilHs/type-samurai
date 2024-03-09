@@ -125,7 +125,7 @@ export type IfNegativeFloat<
   IfFalse = false
 > = If<IsNegativeFloat<T>, IfTrue, IfFalse>;
 
-export type ParseNumber<T extends string> =
+export type ParseNumber<T extends string | number> =
   T extends `${infer NumT extends number}` ? NumT : never;
 
 export type Abs<T extends number> =

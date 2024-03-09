@@ -13,12 +13,10 @@ type PrettifyOptions = {
  * ```
  */
 export type Prettify<
-  T extends object,
+  T,
   Options extends PrettifyOptions = { recursive: false }
 > = T extends infer R
   ? {
-      [K in keyof R]: R[K] extends object
-        ? If<Options["recursive"], Prettify<R[K]>, R[K]>
-        : R[K];
+      [K in keyof R]: If<Options["recursive"], Prettify<R[K], Options>, R[K]>;
     }
   : never;

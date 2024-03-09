@@ -1,5 +1,10 @@
 import { expectType } from "tsd-lite";
-import { IsGreaterThan, IfGreaterThan } from "../src/greater-than";
+import {
+  IsGreaterThan,
+  IfGreaterThan,
+  IsGreaterOrEqual,
+  IfGreaterOrEqual,
+} from "../src/greater-than";
 
 expectType<false>({} as IsGreaterThan<0, 1>);
 expectType<false>({} as IsGreaterThan<-1, 1>);
@@ -15,3 +20,16 @@ expectType<true>({} as IfGreaterThan<1, 0>);
 expectType<"true">({} as IfGreaterThan<1, 0, "true">);
 expectType<false>({} as IfGreaterThan<0, 0>);
 expectType<"false">({} as IfGreaterThan<0, 0, "true", "false">);
+
+expectType<false>({} as IsGreaterOrEqual<0, 1>);
+expectType<false>({} as IsGreaterOrEqual<-1, 1>);
+expectType<true>({} as IsGreaterOrEqual<1, 0>);
+expectType<true>({} as IsGreaterOrEqual<-1, -2>);
+expectType<true>({} as IsGreaterOrEqual<1, 1>);
+expectType<true>({} as IsGreaterOrEqual<-1, -1>);
+
+
+expectType<true>({} as IfGreaterOrEqual<1, 0>);
+expectType<"true">({} as IfGreaterOrEqual<1, 1, "true">);
+expectType<false>({} as IfGreaterOrEqual<-1, 0>);
+expectType<"false">({} as IfGreaterOrEqual<-1, 0, "true", "false">);
